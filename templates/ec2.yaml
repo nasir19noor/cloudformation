@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Minimal EC2 test template
+
+Parameters:
+  KeyName:
+    Type: AWS::EC2::KeyPair::KeyName
+    Description: Name of existing EC2 key pair
+
+Resources:
+  TestInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-047126e50991d067b  # Amazon Linux 2023 for ap-southeast-1
+      InstanceType: t2.micro
+      KeyName: !Ref KeyName
+
+Outputs:
+  InstanceId:
+    Value: !Ref TestInstance
